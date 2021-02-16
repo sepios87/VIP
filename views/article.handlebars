@@ -1,0 +1,22 @@
+<div class="article">
+    <p class="nameArticle">Article</p>
+    <div style="text-align: initial; margin-left : 8px">
+        {{#with article}}
+            <a href="/repertoire/star/{{id}}">{{this.prenomVip}} {{this.nomVip}}</a>
+            <p>{{this.resume}}</p>
+            <p style="float : left; margin : 10px">[Ajouté le {{formatDate this.date 'D MMMM YYYY'}} ]</p>
+            <a style="float : right; margin : 10px" href="/repertoire/star/{{id}}">Voir sa fiche</a>
+        {{else}}
+            <p>Choisssez un vip pour voir les articles le concernant</p>
+        {{/with}}
+    </div>
+</div>
+
+<div style="width : 200px; float: right; border : solid black 1px; border-radius : 5px; padding-bottom : 10px">
+    <p style="color : white; background-color : black; margin : 0; padding-bottom : 15px;">VIPs</p>
+    <div style="display : flex; flex-direction : column">
+        {{#each vip}}
+            <a href="/articles/{{this.id}}">{{this.prenom}} {{this.nom}}</a>
+        {{/each}}   
+    </div>
+</div>

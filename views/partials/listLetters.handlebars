@@ -1,0 +1,6 @@
+<div style="display : flex;">
+    <h3>Cliquez sur une lettre :</h3>
+    {{#each initialesVip}}
+        <a href="/repertoire/{{this.INITIALES}}" style="margin : auto 20px;">{{this.INITIALES}}</a>
+    {{/each}}
+</div>

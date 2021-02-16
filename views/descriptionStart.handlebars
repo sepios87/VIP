@@ -1,0 +1,115 @@
+{{>listLetters}}
+
+<div style="text-align : initial; margin-left : 3%">
+
+    <div style="display: flex;">
+        <img width="150px" height="200px" style="object-fit: cover;" src="/images/vip/{{images.0.photo}}"
+            alt="{{images.0.alt}}" />
+        <div style="display : block; margin : auto 3%">
+            <p><b>Nom : </b>{{ details.prenom }} {{ details.nom }}</p>
+            <p><b>Date de naissance : </b>{{formatDate details.naissance 'dddd D MMMM YYYY' }}</p>
+            <p><b>Nationnalité : </b>{{ details.nationalite }}</p>
+        </div>
+    </div>
+
+    {{#each tabProfessions}}
+        <p><b>Profession :</b> {{ this.profession }} {{#if this.specialite}} ({{this.specialite}}) {{/if}}</p>
+
+        {{#if this.defiles}}
+            <div class="elemNomPrenomDateLieu">
+                <p><b>Principal(aux) défilés : </b></p>
+                <div>
+                    {{#each this.defiles}}
+                    <div>
+                        <p>{{ this.lieu }} ({{formatDate this.date 'MMMM YYYY'}}) de </p>
+                        <a href="{{ this.id }}" onmouseenter='pop(this, `{{this.image}}`, `{{this.descr}}`)' onmouseleave="depop()">
+                            {{ this.prenomCouturier }} {{ this.nomCouturier }}
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if this.films}}
+            <div class="elemNomPrenomDateLieu">
+                <p><b>Principal(aux) film(s) : </b></p>
+                <div>
+                    {{#each this.films}}
+                    <div>
+                        <p>{{ this.titre }} ({{formatDate this.date 'MMMM YYYY'}}) de </p>
+                        <a href="{{ this.id }}" onmouseenter='pop(this, `{{this.image}}`, `{{this.descr}}`)' onmouseleave="depop()">
+                            {{ this.prenomRealisateur }} {{ this.nomRealisateur }}
+                        </a>
+                    </div>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+
+        {{#if this.albums}}
+            <div class="elemNomPrenomDateLieu">
+                <p><b>Principal(aux) albums(s) : </b></p>
+                <div>
+                    {{#each this.albums}}
+                        <p>{{ this.album }} ({{formatDate this.date 'MMMM YYYY'}}) {{ this.maisonDisque }}</p>
+                    {{/each}}
+                </div>
+            </div>
+        {{/if}}
+
+        <br />
+
+    {{/each}}
+
+
+    {{#if mariages}}
+    <div class="elemNomPrenomDateLieu">
+        <p><b>Mariage(s) :</b></p>
+        <div>
+            {{#each mariages}}
+            <div>
+                <a href="{{ this.id }}" onmouseenter='pop(this, `{{this.image}}`, `{{this.descr}}`)' onmouseleave="depop()">
+                    {{ this.mariageAvecPrenom }} {{ this.mariageAvecNom }}
+                </a>
+                <p>({{formatDate this.dateDebut 'MMMM YYYY'}}{{#if this.dateFin}} --> {{formatDate this.dateFin 'MMMM YYYY'}}{{/if}})</p>
+                <p><b>lieu : </b>{{ this.lieu }}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+
+    <br />
+
+    {{#if liaisons}}
+    <div class="elemNomPrenomDateLieu">
+        <p><b>Liaison(s) :</b></p>
+        <div>
+            {{#each liaisons}}
+            <div>
+                <a href="{{ this.id }}" onmouseenter='pop(this, `{{this.image}}`, `{{this.descr}}`)' onmouseleave="depop()">
+                    {{ this.liaisonAvecPrenom }} {{ this.liaisonAvecNom }}
+                </a>
+                <p>({{formatDate this.date 'MMMM YYYY'}})</p>
+                <p><b>raison fin de liaison : </b>{{ this.raisonFin }}</p>
+            </div>
+            {{/each}}
+        </div>
+    </div>
+    {{/if}}
+
+    <p style="width: 90%;"><b>Qui suis-je ? : </b>{{ details.description }} </p>
+
+    <div style="margin : 40px 0">
+        {{#each images}}
+        {{#unless @first}}
+            <a class="example-image-link" href="/images/vip/{{this.photo}}" data-lightbox="{{this.alt}}" data-title="{{this.sujet}} - {{this.alt}}">
+                <image height="180px" src="/images/vip/{{this.photo}}" alt="{{this.alt}}">
+            </a>
+        {{/unless}}
+        {{/each}}
+    </div>
+
+</div>
