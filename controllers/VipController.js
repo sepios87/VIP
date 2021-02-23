@@ -35,7 +35,7 @@ module.exports = {
           modelVip.getFirstLetters(function (err, result1) {callback(null, result1)});
         },
         function (callback) {
-          modelVip.getDetails(request.params.idStart, function (err, result2) {callback(null, result2)});
+          modelVip.getDetails(request.params.idStart, function (err, result2) {callback(null, result2[0])});
         },
         function (callback) {
           modelVip.getLiaisons(request.params.idStart, function (err, result3) {callback(null, result3)});
@@ -62,7 +62,7 @@ module.exports = {
       function (err, result) {
         if (err) return response.render("error", { error: err });
         response.initialesVip = result[0];
-        response.details = result[1][0];
+        response.details = result[1];
         response.liaisons = result[2];
         response.mariages = result[3];
         response.images = result[4];

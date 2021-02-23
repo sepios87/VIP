@@ -1,1 +1,39 @@
-<h1> Mettre ici l'album photo des stars </h1>
+<div id="focusVip">
+    {{#with startPhoto}}
+        <a href="/album/{{../precedent}}"><<</a>
+        <div id="imageStar">
+            <p>{{this.nom}} {{this.prenom}}</p>
+            <img src="/images/vip/{{this.image}}" alt="{{this.description}}">
+        </div>
+        <a href="/album/{{../suivant}}">>></a>
+        <div id="commentaire">
+            <p id="nameCommentaire">Commentaire</p>
+            <div style="text-align: initial; margin-left : 8px">
+                <p>{{this.description}}</p>
+            </div>
+        </div>
+    {{/with}}
+</div>
+
+<div style="display : none" id="deplacementAlbum">
+    <div id="albumPhoto" data-indexImage="{{indexVipActuel}}">
+    {{#each photos}}
+        {{#ifCond id '==' ../id}}
+            <img src="/images/vip/{{this.image}}" alt="{{this.description}}">
+        {{else}} 
+            <a href="/album/{{this.id}}"><img src="/images/vip/{{this.image}}" alt="{{this.description}}"></a>
+        {{/ifCond}}
+    {{/each}}
+    </div>
+
+    <div style="float: left;">
+        <button id="debutPageButton">Debut</button>
+        <button id="prevPageButton">Précédent</button>
+    </div>
+    <div style="float: right;">
+        <button id="nextPageButton">Suivant</button>
+        <button id="finPageButton">Fin</button>
+    </div>
+   
+</div>
+

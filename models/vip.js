@@ -5,7 +5,7 @@ const requete = (callback, requete) => {
     if (!err) {
       connexion.query(requete, callback);
       connexion.release();
-    }
+    } else console.log(err);
   });
 }
 

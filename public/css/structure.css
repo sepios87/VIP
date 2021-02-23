@@ -132,15 +132,67 @@ a  {
     margin-left : 10px;
 }
 
-.article{
+#article, #commentaire{
     width: calc(90% - 200px);
     border:2px solid black;
     float: left;
+    padding-bottom: 6px;
 }
 
-.nameArticle{
-    width:40px;
+#nameArticle, #nameCommentaire{
+    display: table;
     margin-top:-10px;
     margin-left:5px;
+    padding: 0 5px;
     background:white;
+}
+
+#albumPhoto{
+    display: grid; 
+    grid-template-columns: 1fr 1fr 1fr 1fr; 
+    grid-template-rows: 1fr 1fr 1fr; 
+}
+
+#albumPhoto img, #albumPhoto a img{
+    margin : auto; 
+    object-fit: cover;
+    height : 100px;
+    width : 60px;
+}
+
+#albumPhoto a img{
+    opacity : 0.5;
+}
+
+#deplacementAlbum{
+    float: right;
+    width : 20%; 
+}
+
+#focusVip{
+    float: left;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+#imageStar{
+    margin: 0 4%;
+}
+
+#imageStar img{
+    margin : auto; 
+    object-fit: cover;
+    height: 250px;
+    width: 160px;
+}
+
+#commentaire{
+    width: 90%;
+}
+
+#commentaire div{
+    text-align: center !important;
 }
