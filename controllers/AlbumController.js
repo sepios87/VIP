@@ -10,7 +10,7 @@ module.exports.ListerAlbum = 	function(request, response){
       },
       function (callback) {
         if (request.params.idStart !== undefined) //évite de faire requete BD si pas encore de vip choisi
-          modelAlbum.getImage(request.params.idStart, function (err, result2) {callback(null, result2[0])});
+          modelAlbum.getImage(request.params.idStart, function (err, result2) {callback(null, result2)});
         else callback(null, null);
       },
     ],
@@ -19,6 +19,7 @@ module.exports.ListerAlbum = 	function(request, response){
 
       response.photos = result[0];
       response.startPhoto = result[1];
+      response.start = result[1][0];
       response.id = request.params.idStart;
       if (request.params.idStart !== undefined){
         Number.prototype.mod = function(b) {  

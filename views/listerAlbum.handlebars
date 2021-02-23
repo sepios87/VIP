@@ -1,17 +1,23 @@
 <div id="focusVip">
-    {{#with startPhoto}}
+    {{#with start}}
         <a href="/album/{{../precedent}}"><<</a>
+        <button style="margin : 0 30px" id="photoStarSuivante"><</button>
         <div id="imageStar">
             <p>{{this.nom}} {{this.prenom}}</p>
-            <img src="/images/vip/{{this.image}}" alt="{{this.description}}">
-        </div>
-        <a href="/album/{{../suivant}}">>></a>
-        <div id="commentaire">
-            <p id="nameCommentaire">Commentaire</p>
-            <div style="text-align: initial; margin-left : 8px">
-                <p>{{this.description}}</p>
+            {{#each ../startPhoto}}
+            <div style="display: none;" class='photoStar'>
+                <img src="/images/vip/{{this.image}}" alt="{{this.description}}">
+                <div id="commentaire">
+                    <p id="nameCommentaire">Commentaire</p>
+                    <div style="text-align: initial; margin-left : 8px">
+                        <p>{{this.description}}</p>
+                    </div>
+                </div>
             </div>
+            {{/each}}
         </div>
+        <button style="margin : 0 30px" id="photoStarPrecedente">></button>
+        <a href="/album/{{../suivant}}">>></a>
     {{/with}}
 </div>
 
