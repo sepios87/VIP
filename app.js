@@ -30,6 +30,14 @@ app.use(session({
     saveUninitialized: true
 }));
 
+app_admin.use(session({
+    secret: 'nC0@#1pM/-0qA1+é',
+    connect: false,
+    resave: true,
+    saveUninitialized: true
+}));
+
+
 /* ces lignes permettent d'utiliser directement les variables de session dans handlebars
  UTILISATION : {{session.MaVariable}}  */
 app.use(function(request, response, next){
@@ -41,9 +49,10 @@ let exphbs = require('express-handlebars');
 app.set('view engine', 'handlebars'); //nom de l'extension des fichiers
 app_admin.set('view engine', 'handlebars'); //nom de l'extension des fichiers
 let handlebars  = require('./helpers/handlebars.js')(exphbs); //emplacement des helpers
+let handlebars_admin  = require('./helpers/handlebarsAdmin.js')(exphbs); //emplacement des helpers
 
 app.engine('handlebars', handlebars.engine);
-app_admin.engine('handlebars', handlebars.engine);
+app_admin.engine('handlebars', handlebars_admin.engine);
 
 var routes = require('./router/router');
 app.use('/', routes);

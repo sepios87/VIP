@@ -6,7 +6,9 @@ var router = express.Router();
 
 // Main Routes
 router.get("/", LoginController.Index);
-router.get("/accueil", HomeController.Index);
+router.post("/", LoginController.Identification);
+
+router.get("/home", HomeController.AdminPage);
 
 // tout le reste
 router.get("*", HomeController.NotFound);

@@ -19,13 +19,13 @@ module.exports.ListerAlbum = 	function(request, response){
 
       response.photos = result[0];
       response.startPhoto = result[1];
-      response.start = result[1][0];
       response.id = request.params.idStart;
       if (request.params.idStart !== undefined){
         Number.prototype.mod = function(b) {  
           return ((this % b) + b) % b; 
         } 
-        let indexVipActuel = result[0].indexOf(result[0].find(elem => elem.id == result[1].id));
+        response.start = result[1][0];
+        let indexVipActuel = result[0].indexOf(result[0].find(elem => elem.id == result[1][0].id));
         response.indexVipActuel = indexVipActuel;
         response.suivant = result[0][(indexVipActuel+1)%result[0].length].id;
         response.precedent = result[0][(indexVipActuel-1).mod(result[0].length)].id;
