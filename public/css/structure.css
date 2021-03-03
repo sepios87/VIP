@@ -237,3 +237,18 @@ legend{
     color : red;
     margin-top: 20px;
 }
+
+#menuVipAdmin{
+    color : white; 
+    background-color: black; 
+    display : flex; 
+    flex-direction: column; 
+    width : 150px; 
+    border-radius : 8px;
+}
+
+#menuVipAdmin a{
+    color : white; 
+    border-top : solid white 1px;
+    padding: 8px 0;
+}

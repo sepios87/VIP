@@ -1,0 +1,30 @@
+{{>menuVipAdmin}}
+
+<form>
+    <fieldset>
+        <legend>Ajouter VIPs</legend>
+        <label for="nom">Nom* :</label>
+        <input name="nom">
+        <label for="prenom">Prenom* :</label>
+        <input name="prenom">
+        <label for="sexe">Nom* :</label>
+        <select name="sexe">
+            <option value="M">Masculin</option>
+            <option value="F">Féminin</option>
+        </select>
+        <label for="prenom">Date de naissance :</label>
+        <input name="prenom" type="date">
+        <label for="nationalite">Nationalité :</label>
+        <select name="nationalite">
+            {{#each nationalite}}
+                <option value="{{this.id}}">{{this.nom}}</option>
+            {{/each}}
+        </select>
+        <label for="commentaire">Commentaire :</label>
+        <input name="commentaire" type="text">
+        <label for="image">Selectionner l'image</label>
+        <input type="file">
+        <label for="sujet">Sujet :</label>
+        <input name="sujet">
+    </fieldset>
+</form>

@@ -10,13 +10,10 @@ module.exports = {
         response.render('notFound', response);
     },
     AdminPage: (request, response) => {
-        if (request.session.connect) {
-            response.connect = request.session.connect;
-            response.name = request.session.name;
-            response.title = "Bienvenue sur le site de SIXVOIX (IUT du Limousin).";
-            response.render('home', response);
-        } else {
-            response.redirect('/');
-        }         
+        if (!request.session.connect) return response.redirect('/');
+        response.connect = request.session.connect;
+        response.name = request.session.name;
+        response.title = "Bienvenue sur le site de SIXVOIX (IUT du Limousin).";
+        response.render('home', response);
     }
 }

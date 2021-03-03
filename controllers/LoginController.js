@@ -5,6 +5,7 @@ let Crypt = require('cryptr');
 
 module.exports = {
     Index: (request, response) => {
+        request.session.connect = false;
         response.title = "Bienvenue sur le site de SIXVOIX (IUT du Limousin).";
         response.render('login', response);
     },
