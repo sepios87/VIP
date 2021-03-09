@@ -245,10 +245,54 @@ legend{
     flex-direction: column; 
     width : 150px; 
     border-radius : 8px;
+    float: left;
 }
 
 #menuVipAdmin a{
     color : white; 
     border-top : solid white 1px;
     padding: 8px 0;
+}
+
+form {
+    float: right;
+    width: calc(90% - 150px);
+}
+
+form legend{
+    margin-bottom: 20px;
+}
+
+#containerForm{
+    display: flex;
+    flex-direction: column;
+    padding: 0 10%;
+}
+
+#containerForm div:not(#addImage){
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-bottom: 20px;
+    text-align: initial;
+    grid-row: 50px;
+}
+
+#addImage div{
+    grid-column-gap: 30px;
+}
+
+#addImage{
+    border : solid black 1px;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}
+
+#addImage div{
+    margin : 0 2%;
+}
+
+#addImage button{
+    width: 250px;
+    margin: auto;
 }

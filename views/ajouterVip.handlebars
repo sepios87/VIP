@@ -1,30 +1,54 @@
 {{>menuVipAdmin}}
 
-<form>
+<form method="POST">
     <fieldset>
         <legend>Ajouter VIPs</legend>
-        <label for="nom">Nom* :</label>
-        <input name="nom">
-        <label for="prenom">Prenom* :</label>
-        <input name="prenom">
-        <label for="sexe">Nom* :</label>
-        <select name="sexe">
-            <option value="M">Masculin</option>
-            <option value="F">Féminin</option>
-        </select>
-        <label for="prenom">Date de naissance :</label>
-        <input name="prenom" type="date">
-        <label for="nationalite">Nationalité :</label>
-        <select name="nationalite">
-            {{#each nationalite}}
-                <option value="{{this.id}}">{{this.nom}}</option>
-            {{/each}}
-        </select>
-        <label for="commentaire">Commentaire :</label>
-        <input name="commentaire" type="text">
-        <label for="image">Selectionner l'image</label>
-        <input type="file">
-        <label for="sujet">Sujet :</label>
-        <input name="sujet">
+        <div id="containerForm">
+            <div>
+                <label for="nom">Nom* :</label>
+                <input name="nom" required>
+            </div>
+            <div>
+                <label for="prenom">Prenom* :</label>
+                <input name="prenom" required>
+            </div>
+            <div>
+                <label for="sexe">Sexe* :</label>
+                <select name="sexe" required>
+                    <option value="M">Masculin</option>
+                    <option value="F">Féminin</option>
+                </select>
+            </div>
+            <div>
+                <label for="dateNaissance">Date de naissance :</label>
+                <input name="dateNaissance" required type="date" value="{{formatDate date 'YYYY-MM-DD'}}">
+            </div>
+            <div>
+                <label for="nationalite">Nationalité :</label>
+                <select name="nationalite" required>
+                    {{#each nationalite}}
+                    <option value="{{this.id}}">{{this.nom}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div>
+                <label for="commentaire">Commentaire :</label>
+                <textarea name="commentaire"></textarea>
+            </div>
+            <div id="addImage">
+                <div>
+                    <div>
+                        <label for="image">Selectionner l'image</label>
+                        <input name="image" type="file" accept="image/png, image/jpeg" required>
+                    </div>
+                    <div>
+                        <label for="sujet">Sujet :</label>
+                        <input name="sujet">
+                    </div>
+                </div>
+                <button id="buttonAddImage">Ajouter une autre image</button>
+            </div>
+        </div>
+        <input type="submit" value="Ajouter le VIP">
     </fieldset>
 </form>

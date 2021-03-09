@@ -10,7 +10,8 @@ router.post("/", LoginController.Identification);
 
 router.get("/home", HomeController.AdminPage);
 
-router.get("/vip/ajouter", VipAdminController.choixMenuVip);
+router.get("/vip/ajouter", VipAdminController.ajouterVip);
+router.post("/vip/ajouter", VipAdminController.ajouterVipTraiteInfo);
 
 router.get("*", HomeController.NotFound);
 router.post("*", HomeController.NotFound);

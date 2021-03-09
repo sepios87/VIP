@@ -10,10 +10,6 @@ const requete = (callback, requete) => {
 }
 
 module.exports = {
-  
-  getFirstLetters: (callback) => {
-    requete(callback, "SELECT DISTINCT SUBSTRING(VIP_NOM, 1, 1) AS INITIALES FROM vip ORDER BY 1;");
-  },
 
   getImage: (arg, callback) => {
     requete(callback, 
