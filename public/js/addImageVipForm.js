@@ -1,7 +1,6 @@
 $(function () {
-
-    $('#buttonAddImage').on('click', function(e){
-        let divPhoto = $(`
+  $("#buttonAddImage").on("click", function (e) {
+    let divPhoto = $(`
                 <div>
                     <div>
                         <label for="image">Selectionner l'image</label>
@@ -12,13 +11,9 @@ $(function () {
                         <input name="sujet">
                     </div>
                 </div>
-        `)
-        $(this).before(divPhoto)
-        e.preventDefault();
-    });
+        `);
+    $(this).before(divPhoto);
+    e.preventDefault();
+  });
 
-    $('input[type="file"]').on('change', function(event){
-        console.log(URL.createObjectURL(event.target.files[0]))
-    })
-
-})
+});
