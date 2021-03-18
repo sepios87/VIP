@@ -1,0 +1,33 @@
+{{>menuPhotoAdmin}}
+
+<form method="POST" enctype="multipart/form-data" accept-charset="utf-8">
+    <fieldset>
+        <legend>Ajout d'une photo</legend>
+        <div id="containerForm">
+            <div>
+                <label for="nom">Nom du vip :</label>
+                <select>
+                    {{#each vip}}
+                    <option value="{{this.id}}">{{this.prenom}} {{this.nom}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div>
+                <label for="image">Adresse de la photo :</label>
+                <input name="image" type="file" accept="image/png, image/jpeg" required>
+            </div>
+            <div>
+                <label for="titre">Titre :</label>
+                <input name="titre" type="text">
+            </div>
+            <div>
+                <label for="commentaire">Un petite commentaire ?</label>
+                <textarea name="commentaire" rows="3"></textarea>
+            </div>
+        </div>
+        <div>
+            <input type="submit" value="Envoyer">
+            <input type="reset" value="Annuler">
+        </div>
+    </fieldset>
+</form>

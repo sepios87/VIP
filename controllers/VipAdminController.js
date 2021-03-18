@@ -7,6 +7,7 @@ module.exports = {
     if (!request.session.connect) return response.redirect("/");
     response.title = "Répertoire des stars";
     response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
+    response.name = request.session.name;
     
     modelVipStats.getAllNationalite(function (err, result) {
         response.nationalite = result;
@@ -19,6 +20,7 @@ module.exports = {
     if (!request.session.connect) return response.redirect("/");
     response.title = "Répertoire des stars";
     response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
+    response.name = request.session.name;
 
     var form = new formidable.IncomingForm();
 

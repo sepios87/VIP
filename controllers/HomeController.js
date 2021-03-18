@@ -13,6 +13,7 @@ module.exports = {
         if (!request.session.connect) return response.redirect('/');
         response.connect = request.session.connect;
         response.name = request.session.name;
+        request.session.name = response.name;
         response.title = "Bienvenue sur le site de SIXVOIX (IUT du Limousin).";
         response.render('home', response);
     }

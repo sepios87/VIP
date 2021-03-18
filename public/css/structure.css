@@ -296,3 +296,13 @@ form legend{
     width: 250px;
     margin: auto;
 }
+
+#deco{
+    display: flex;
+    float: right;
+    margin-top: 2%;
+    margin-right: 16%;
+    width: 220px;
+    justify-content: space-around;
+    border: solid 1px;
+}

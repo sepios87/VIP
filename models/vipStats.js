@@ -17,6 +17,10 @@ module.exports = {
 
   getAllNationalite: (callback) => {
       requete(callback, "SELECT NATIONALITE_NUMERO AS id, NATIONALITE_NOM as nom FROM nationalite")
+  },
+
+  getAllVip: (callback) => {
+    requete(callback, "SELECT VIP_NUMERO AS id, VIP_NOM as nom, VIP_PRENOM as prenom FROM vip")
   }
 
 };
