@@ -21,30 +21,21 @@ module.exports = {
     response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
 
     var form = new formidable.IncomingForm();
-    let champs;
 
-    form.parse(request, (err, fields, files) => {
-      console.log(fields)
+    let d = new Date,
+    dformat = [d.getFullYear(),(d.getMonth()+1).toString().padStart(2, '0'), d.getDate().toString().padStart(2, '0')].join('-')+' '
+      +[d.getHours(),d.getMinutes().toString().padStart(2, '0').toString().padStart(2, '0'),d.getSeconds().toString().padStart(2, '0')].join(':');
+
+    form.parse(request, (err, fields, file) => {
+      modelGestionVip.addVip({info : fields, date : dformat}, function(err, result){
+        modelGestionVip.addImage({id : result.insertId, image : file.image.name, info : fields});
+      })
     });
 
     form.on('fileBegin', function (name, file){
-      file.path = __dirname + '/../public/images/' + file.name;
+      file.path = __dirname + '/../public/images/vip/' + file.name;
     });
 
-    form.on('file', function (name, file){
-      console.log('Uploaded ' + file.name);
-    });
-
-    let d = new Date,
-    dformat = [d.getFullYear(),(d.getMonth()+1).toString().padStart(2, '0'), d.getDate().toString().padStart(2, '0')].join('-')
-      +' '
-      +[d.getHours(),d.getMinutes().toString().padStart(2, '0').toString().padStart(2, '0'),d.getSeconds().toString().padStart(2, '0')].join(':');
-    
-    // modelGestionVip.addVip({info : request.body, date : dformat}, function(err, result){
-    //   console.log(err, result)
-    //   response.render("ajouterVip", response);
-    // })
     response.render("ajouterVip", response);
-
   },
 };
