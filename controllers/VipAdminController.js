@@ -40,4 +40,29 @@ module.exports = {
 
     response.render("ajouterVip", response);
   },
+
+  supprimerVip: (request, response) => {
+    if (!request.session.connect) return response.redirect("/");
+    response.title = "Répertoire des stars";
+    response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
+    response.name = request.session.name;
+    
+    modelVipStats.getAllVip(function (err, result) {
+      response.vip = result;
+      console.log(result)
+      response.render("supprimerVip", response);
+    });
+  },
+
+  supprimerVipTraiteInfo: (request, response) => {
+    if (!request.session.connect) return response.redirect("/");
+    response.title = "Répertoire des stars";
+    response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
+    response.name = request.session.name;
+
+    response.render("supprimerVip", response);
+
+  }
+
+
 };

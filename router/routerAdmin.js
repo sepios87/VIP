@@ -14,8 +14,14 @@ router.get("/home", HomeController.AdminPage);
 router.get("/vip/ajouter", VipAdminController.ajouterVip);
 router.post("/vip/ajouter", VipAdminController.ajouterVipTraiteInfo);
 
+router.get("/vip/supprimer", VipAdminController.supprimerVip);
+router.post("/vip/supprimer", VipAdminController.supprimerVipTraiteInfo);
+
 router.get("/photo/ajouter", PhotoAdminController.ajouterPhotoVip);
 router.post("/photo/ajouter", PhotoAdminController.ajouterPhotoVip);
+
+router.get("/photo/supprimer", PhotoAdminController.supprimerPhotoVip);
+router.post("/photo/supprimer", PhotoAdminController.supprimerPhotoVip);
 
 router.get("*", HomeController.NotFound);
 router.post("*", HomeController.NotFound);

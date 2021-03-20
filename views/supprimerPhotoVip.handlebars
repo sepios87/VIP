@@ -1,0 +1,26 @@
+{{>menuPhotoAdmin}}
+
+<form method="POST" enctype="multipart/form-data" accept-charset="utf-8">
+    <fieldset>
+        <legend>Supprimer une photo</legend>
+        <div id="containerForm">
+            <div>
+                <label for="nom">Nom du vip :</label>
+                <select id="selectVip">
+                    {{#each vip}}
+                    <option value="{{this.id}}">{{this.prenom}} {{this.nom}}</option>
+                    {{/each}}
+                </select>
+            </div>
+             <div>
+                <label for="nom">Description de la photo :</label>
+                <select id="selectPhoto">
+                    {{#each photo}}
+                    <option data-vipid="{{this.vip_id}}" value="{{this.vip_id}}-{{this.id}}">{{this.commentaire}} {{this.adresse}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <input type="submit" value="Supprimer">
+    </fieldset>
+</form>

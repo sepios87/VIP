@@ -21,6 +21,10 @@ module.exports = {
 
   getAllVip: (callback) => {
     requete(callback, "SELECT VIP_NUMERO AS id, VIP_NOM as nom, VIP_PRENOM as prenom FROM vip")
+  },
+
+  getAllImage: (callback) => {
+    requete(callback, "SELECT PHOTO_NUMERO as id, VIP_NUMERO as vip_id, PHOTO_COMMENTAIRE as commentaire, PHOTO_ADRESSE as adresse FROM photo")
   }
 
 };
