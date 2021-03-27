@@ -1,12 +1,12 @@
 {{>menuVipAdmin}}
 
-<form method="POST" enctype="multipart/form-data" accept-charset="utf-8">
+<form method="POST" accept-charset="utf-8">
     <fieldset>
         <legend>Supprimer VIPs</legend>
         <div id="containerForm">
             <div>
                 <label for="nom">Nom du vip :</label>
-                <select>
+                <select name="idVip">
                     {{#each vip}}
                     <option value="{{this.id}}">{{this.prenom}} {{this.nom}}</option>
                     {{/each}}

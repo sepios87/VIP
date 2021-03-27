@@ -21,7 +21,7 @@ router.get("/photo/ajouter", PhotoAdminController.ajouterPhotoVip);
 router.post("/photo/ajouter", PhotoAdminController.ajouterPhotoVip);
 
 router.get("/photo/supprimer", PhotoAdminController.supprimerPhotoVip);
-router.post("/photo/supprimer", PhotoAdminController.supprimerPhotoVip);
+router.post("/photo/supprimer", PhotoAdminController.supprimerPhotoVipTraitement);
 
 router.get("*", HomeController.NotFound);
 router.post("*", HomeController.NotFound);

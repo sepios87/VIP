@@ -31,7 +31,7 @@ module.exports = {
     form.parse(request, (err, fields, file) => {
       modelGestionVip.addVip({info : fields, date : dformat}, function(err, result){
         modelGestionVip.addImage({id : result.insertId, image : file.image.name, info : fields});
-      })
+      });
     });
 
     form.on('fileBegin', function (name, file){
@@ -49,20 +49,24 @@ module.exports = {
     
     modelVipStats.getAllVip(function (err, result) {
       response.vip = result;
-      console.log(result)
       response.render("supprimerVip", response);
     });
   },
 
-  supprimerVipTraiteInfo: (request, response) => {
+  supprimerVipTraiteInfo: async (request, response) => {
     if (!request.session.connect) return response.redirect("/");
     response.title = "Répertoire des stars";
     response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
     response.name = request.session.name;
-
-    response.render("supprimerVip", response);
-
+    modelGestionVip.removePhoto(request.body.idVip, function(err, result){
+      console.log(err, result)
+    });
+    modelGestionVip.removeVip((request.body.idVip), function(err, result){
+      console.log(err, result)
+    })
+    modelVipStats.getAllVip(function (err, result) {
+      response.vip = result;
+      response.render("supprimerVip", response);
+    });
   }
-
-
 };

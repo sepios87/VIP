@@ -46,6 +46,6 @@ module.exports = {
     `SELECT PHOTO_ADRESSE AS photo, PHOTO_COMMENTAIRE as alt, PHOTO_SUJET as sujet 
     FROM photo p, vip v 
     WHERE p.VIP_NUMERO = v.VIP_NUMERO AND v.VIP_NUMERO = ${arg}`);
-  }
+  },
 
 };
