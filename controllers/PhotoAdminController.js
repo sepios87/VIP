@@ -1,5 +1,5 @@
 var formidable = require("formidable");
-let modelVipStats = require("../models/vipStats.js");// toi je t'aime t'es trop mon amoureux 
+let modelVipStats = require("../models/vipStats.js");
 let modelGestionVip = require("../models/gestionVip.js");
 let async = require("async");
 
