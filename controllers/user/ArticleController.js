@@ -1,5 +1,5 @@
 let async = require("async");
-let modelArticle = require("../models/article.js");
+let modelArticle = require("../../models/article.js");
 
 module.exports = {
   affichageArticles: (request, response) => {

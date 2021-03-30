@@ -1,5 +1,5 @@
 const { request, response } = require("express");
-let modelLogin = require("../models/login.js");
+let modelLogin = require("../../models/login.js");
 
 let Crypt = require('cryptr');
 

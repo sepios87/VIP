@@ -1,8 +1,8 @@
 var express = require("express");
 let HomeController = require("./../controllers/HomeController");
-let VipController = require("./../controllers/VipController");
-let AlbumController = require("./../controllers/AlbumController");
-let ArticleController = require("./../controllers/ArticleController");
+let VipController = require("./../controllers/user/VipController");
+let AlbumController = require("./../controllers/user/AlbumController");
+let ArticleController = require("./../controllers/user/ArticleController");
 
 var router = express.Router();
 

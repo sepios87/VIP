@@ -25,6 +25,10 @@ module.exports = {
 
   getAllImage: (callback) => {
     requete(callback, "SELECT PHOTO_NUMERO as id, VIP_NUMERO as vip_id, PHOTO_COMMENTAIRE as commentaire, PHOTO_ADRESSE as adresse FROM photo")
+  },
+
+  getNumberImage: (arg, callback) => {
+    requete(callback, `SELECT COUNT(*) as nb FROM photo WHERE VIP_NUMERO=${arg}`)
   }
 
 };

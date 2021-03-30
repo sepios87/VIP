@@ -1,6 +1,6 @@
 var formidable = require("formidable");
-let modelVipStats = require("../models/vipStats.js");
-let modelGestionVip = require("../models/gestionVip.js");
+let modelVipStats = require("../../models/vipStats.js");
+let modelGestionVip = require("../../models/gestionVip.js");
 let async = require("async");
 
 module.exports = {
@@ -10,6 +10,31 @@ module.exports = {
     response.title = "Répertoire des stars";
     response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
 
+    modelVipStats.getAllVip(function (err, result) {
+      response.vip = result;
+      response.render("ajouterPhotoVip", response);
+    });
+  },
+
+  ajouterPhotoVipTraitement: (request, response) => {
+    if (!request.session.connect) return response.redirect("/");
+    response.name = request.session.name;
+    response.title = "Répertoire des stars";
+    response.connect = request.session.connect; //sinon n'affiche pas le reste de la page
+
+    var form = new formidable.IncomingForm();
+
+    form.parse(request, (err, fields, file) => {
+     modelVipStats.getNumberImage(fields.idVip, function(err, result){
+      modelGestionVip.addImage({num : result[0].nb+1, id : fields.idVip, image : file.image.name, info : {sujet : fields.titre, descr : fields.commentaire}});
+      });
+    });
+
+    form.on('fileBegin', function (name, file){
+      file.path = __dirname + '/../public/images/vip/' + file.name;
+    });
+
+    //modelVipStats.getNumberImage()
     modelVipStats.getAllVip(function (err, result) {
       response.vip = result;
       response.render("ajouterPhotoVip", response);

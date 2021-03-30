@@ -1,6 +1,6 @@
-let modelVip = require("../models/vip.js");
-let modelVipStats = require("../models/vipStats.js");
-let modelProfession = require("../models/profession.js");
+let modelVip = require("../../models/vip.js");
+let modelVipStats = require("../../models/vipStats.js");
+let modelProfession = require("../../models/profession.js");
 let async = require("async");
 
 module.exports = {

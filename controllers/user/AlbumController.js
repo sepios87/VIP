@@ -1,5 +1,5 @@
 let async = require("async");
-let modelAlbum = require("../models/album.js");
+let modelAlbum = require("../../models/album.js");
 
 module.exports.ListerAlbum = 	function(request, response){
    response.title = 'Album des stars';
