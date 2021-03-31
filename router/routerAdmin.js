@@ -1,31 +1,33 @@
 var express = require("express");
-let HomeController = require("./../controllers/HomeController");
+let HomeController = require("../controllers/admin/HomeAdminController");
 let LoginController = require("./../controllers/admin/LoginController");
-let VipAdminController = require("./../controllers/admin/VipAdminController")
-let PhotoAdminController = require("./../controllers/admin/PhotoAdminController")
+let VipController = require("./../controllers/admin/VipAdminController")
+let PhotoController = require("./../controllers/admin/PhotoAdminController")
 
 var router = express.Router();
+
+const auth = require('../middleware/auth');
 
 router.get("/", LoginController.Index);
 router.post("/", LoginController.Identification);
 
-router.get("/home", HomeController.AdminPage);
+router.get("/home", auth, HomeController.AdminPage);
 
-router.get("/vip/ajouter", VipAdminController.ajouterVip);
-router.post("/vip/ajouter", VipAdminController.ajouterVipTraiteInfo);
+router.get("/vip/ajouter", auth, VipController.ajouterVip);
+router.post("/vip/ajouter", auth, VipController.ajouterVipTraiteInfo);
 
-router.get("/vip/modifier", VipAdminController.selectionnerVip);
-router.get("/vip/modifierVip/:idStart", VipAdminController.modifierVip);
-router.post("/vip/modifierVip/:idStart", VipAdminController.modifierVipTraiterInfo);
+router.get("/vip/modifier", auth, VipController.selectionnerVip);
+router.get("/vip/modifierVip/:idStart", auth, VipController.modifierVip);
+router.post("/vip/modifierVip/:idStart", auth, VipController.modifierVipTraiterInfo);
 
-router.get("/vip/supprimer", VipAdminController.supprimerVip);
-router.post("/vip/supprimer", VipAdminController.supprimerVipTraiteInfo);
+router.get("/vip/supprimer", auth, VipController.supprimerVip);
+router.post("/vip/supprimer", auth, VipController.supprimerVipTraiteInfo);
 
-router.get("/photo/ajouter", PhotoAdminController.ajouterPhotoVip);
-router.post("/photo/ajouter", PhotoAdminController.ajouterPhotoVipTraitement);
+router.get("/photo/ajouter", auth, PhotoController.ajouterPhotoVip);
+router.post("/photo/ajouter", auth, PhotoController.ajouterPhotoVipTraitement);
 
-router.get("/photo/supprimer", PhotoAdminController.supprimerPhotoVip);
-router.post("/photo/supprimer", PhotoAdminController.supprimerPhotoVipTraitement);
+router.get("/photo/supprimer", auth, PhotoController.supprimerPhotoVip);
+router.post("/photo/supprimer", auth, PhotoController.supprimerPhotoVipTraitement);
 
 router.get("*", HomeController.NotFound);
 router.post("*", HomeController.NotFound);

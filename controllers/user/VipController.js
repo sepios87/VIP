@@ -1,5 +1,4 @@
 let modelVip = require("../../models/vip.js");
-let modelVipStats = require("../../models/vipStats.js");
 let modelProfession = require("../../models/profession.js");
 let async = require("async");
 
@@ -10,7 +9,7 @@ module.exports = {
     async.parallel(
       [
         function (callback) {
-          modelVipStats.getFirstLetters(function (err, result1) {callback(null, result1)});
+          modelVip.getFirstLetters(function (err, result1) {callback(null, result1)});
         },
         function (callback) {
           if (request.params.initiale !== undefined) //évite de faire requete BD si pas encore de lettre choisie
@@ -33,7 +32,7 @@ module.exports = {
     async.parallel(
       [
         function (callback) {
-          modelVipStats.getFirstLetters(function (err, result) {callback(null, result)});
+          modelVip.getFirstLetters(function (err, result) {callback(null, result)});
         },
         function (callback) {
           modelVip.getDetails(request.params.idStart, function (err, result) {callback(null, result[0])});
