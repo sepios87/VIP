@@ -9,11 +9,11 @@ module.exports = {
     async.parallel(
       [
         function (callback) {
-          modelVip.getFirstLetters(function (err, result1) {callback(null, result1)});
+          modelVip.getFirstLetters(function (err, result) {callback(null, result)});
         },
         function (callback) {
           if (request.params.initiale !== undefined) //évite de faire requete BD si pas encore de lettre choisie
-            modelVip.getImage(request.params.initiale, function (err, result2) {callback(null, result2)});
+            modelVip.getImage(request.params.initiale, function (err, result) {callback(null, result)});
           else callback(null, null);
         },
       ],

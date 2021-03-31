@@ -26,10 +26,10 @@ module.exports = {
     });
 
     form.on('fileBegin', function (name, file){
-      file.path = __dirname + '/../public/images/vip/' + file.name;
+      file.path = __dirname + '../../../public/images/vip/' + file.name;
     });
 
-    response.render("ajouterVip", response);
+    response.redirect("/vip/ajouter");
   },
 
   selectionnerVip: (request, response) => {
@@ -41,28 +41,17 @@ module.exports = {
   },
 
   modifierVip: (request, response) => {
-    async.parallel(
-      [
-        function (callback) {
-          modelVip.getDetails(request.params.idStart, function (err, result) {callback(null, result[0])});
-        },
-        function (callback) {
-          modelVip.getAllNationalite(function (err, result) {callback(null, result)});
-        },
-      ], function (err, result) {
-        if (err) return response.render("error", { error: err });
-        response.vip = result[0];
-        response.nationalite = result[1];
-        response.render("modifierVip", response);
-      });
+    modelVip.getDetails(request.params.idStart, function (err, result) {
+      response.vip = result[0];
+      response.render("modifierVip", response);
+    });
   },
 
   modifierVipTraiterInfo: (request, response) => {
-    modelVip.getAllVip(function (err, result) {
-      if (err) return response.render("error", { error: err });
-      response.vip = result;
-      response.render("selectionVip", response);
-    });
+    console.log(request.body)
+    modelGestionVip.modifierVip({vip : request.body, id : request.params.idStart}, function(err, result){
+      response.redirect("/vip/modifier");
+    })
   },
 
   supprimerVip: (request, response) => {
@@ -115,13 +104,9 @@ module.exports = {
         },
       ],
       function (err, result) {
-        console.log(err)
+        if (err) return response.render("error", { error: err });
         modelGestionVip.removeVip((request.body.idVip), function(err, result){
-          console.log(err)
-          modelVip.getAllVip(function (err, result) {
-            response.vip = result;
-            response.render("supprimerVip", response);
-          });
+          response.redirect("/vip/supprimer");
         });
       }
     );

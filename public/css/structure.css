@@ -306,3 +306,20 @@ form legend{
     justify-content: space-around;
     border: solid 1px;
 }
+
+#selectionVip{
+    border : solid black 1px; 
+    width : 30%; 
+    display : flex; 
+    margin : auto; 
+    flex-direction: column;
+    height: 50vh;
+    overflow-y: scroll;
+}
+
+#selectionVip div{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 80%;
+    margin: 10px auto;
+}

@@ -24,10 +24,7 @@ module.exports = {
       file.path = __dirname + '../../../public/images/vip/' + file.name;
     });
 
-    modelVip.getAllVip(function (err, result) {
-      response.vip = result;
-      response.render("ajouterPhotoVip", response);
-    });
+    response.redirect("/photo/ajouter");
   },
 
   supprimerPhotoVip: (request, response) => {
@@ -52,22 +49,7 @@ module.exports = {
   supprimerPhotoVipTraitement: (request, response) => {
     let tabPhotoVip = request.body.photo.split(('-'))
     modelGestionVip.removePhotoVip({idVip : tabPhotoVip[0], idPhoto : tabPhotoVip[1]});
-    async.parallel(
-      [
-        function (callback) {
-          modelVip.getAllVip(function (err, result) {callback(null, result)});
-        },
-        function (callback) {
-          modelVip.getAllImage(function(err, result){callback(null, result)})
-        },
-      ],
-      function (err, result) {
-        if (err) return response.render("error", { error: err });
-        response.vip = result[0];
-        response.photo = result[1];
-        response.render("supprimerPhotoVip", response);
-      }
-    );
+    response.redirect("/photo/supprimer");
   }
 
 };

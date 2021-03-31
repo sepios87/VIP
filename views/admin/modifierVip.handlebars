@@ -13,23 +13,8 @@
                 <input name="prenom" value="{{vip.prenom}}" required>
             </div>
             <div>
-                <label for="sexe">Sexe* :</label>
-                <select name="sexe" required>
-                    <option value="M">Masculin</option>
-                    <option value="F">Féminin</option>
-                </select>
-            </div>
-            <div>
                 <label for="dateNaissance">Date de naissance :</label>
                 <input name="dateNaissance" required type="date" value="{{formatDate vip.naissance 'YYYY-MM-DD'}}">
-            </div>
-            <div>
-                <label for="nationalite">Nationalité :</label>
-                <select name="nationalite" required>
-                    {{#each nationalite}}
-                    <option value="{{this.id}}">{{this.nom}}</option>
-                    {{/each}}
-                </select>
             </div>
             <div>
                 <label for="commentaire">Commentaire :</label>

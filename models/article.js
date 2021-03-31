@@ -10,10 +10,10 @@ const requete = (callback, requete) => {
 }
 
 module.exports = {
-    getArticle: (arg, callback) => {
+    getArticle: (idVip, callback) => {
         requete(callback, `SELECT ARTICLE_RESUME as resume, ARTICLE_DATE_INSERT as date, VIP_NOM as nomVip, VIP_PRENOM as prenomVip
                           FROM vip v, apoursujet s, article a 
-                          WHERE s.VIP_NUMERO = ${arg} AND s.VIP_NUMERO = v.VIP_NUMERO AND a.ARTICLE_NUMERO=s.ARTICLE_NUMERO`);
+                          WHERE s.VIP_NUMERO = ${idVip} AND s.VIP_NUMERO = v.VIP_NUMERO AND a.ARTICLE_NUMERO=s.ARTICLE_NUMERO`);
       },
 
       getAllVipWithArticle: (callback) => {

@@ -1,5 +1,5 @@
 var express = require("express");
-let HomeController = require("./../controllers/HomeController");
+let HomeController = require("../controllers/user/HomeController");
 let VipController = require("./../controllers/user/VipController");
 let AlbumController = require("./../controllers/user/AlbumController");
 let ArticleController = require("./../controllers/user/ArticleController");

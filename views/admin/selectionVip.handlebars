@@ -1,7 +1,9 @@
 {{>menuVipAdmin}}
-<div style='border : solid black 1px; width : 30%; display : flex; margin : auto; justify-content : space-between'>
+<div id="selectionVip">
 {{#each vip}}
-<p value="{{this.id}}">{{this.prenom}} {{this.nom}}</p>
-<a href='/vip/modifierVip/{{this.id}}'>Modifier<a/>
+<div>
+    <p>{{this.prenom}} {{this.nom}}</p>
+    <a href='/vip/modifierVip/{{this.id}}'>Modifier</a>
+</div>
 {{/each}}
 </div>
