@@ -31,10 +31,9 @@ module.exports = {
     });
 
     form.on('fileBegin', function (name, file){
-      file.path = __dirname + '/../public/images/vip/' + file.name;
+      file.path = __dirname + '../../../public/images/vip/' + file.name;
     });
 
-    //modelVipStats.getNumberImage()
     modelVipStats.getAllVip(function (err, result) {
       response.vip = result;
       response.render("ajouterPhotoVip", response);

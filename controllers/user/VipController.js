@@ -33,31 +33,31 @@ module.exports = {
     async.parallel(
       [
         function (callback) {
-          modelVipStats.getFirstLetters(function (err, result1) {callback(null, result1)});
+          modelVipStats.getFirstLetters(function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelVip.getDetails(request.params.idStart, function (err, result2) {callback(null, result2[0])});
+          modelVip.getDetails(request.params.idStart, function (err, result) {callback(null, result[0])});
         },
         function (callback) {
-          modelVip.getLiaisons(request.params.idStart, function (err, result3) {callback(null, result3)});
+          modelVip.getLiaisons(request.params.idStart, function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelVip.getMariages(request.params.idStart, function (err, result4) {callback(null, result4)});
+          modelVip.getMariages(request.params.idStart, function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelVip.getAllImages(request.params.idStart, function (err, result5) {callback(null, result5)});
+          modelVip.getAllImages(request.params.idStart, function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelProfession.getDefiles(request.params.idStart, function (err, result6) {callback(null, result6)});
+          modelProfession.getDefiles(request.params.idStart, function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelProfession.getFilms(request.params.idStart, function (err, result7) {callback(null, result7)});
+          modelProfession.getFilms(request.params.idStart, function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelProfession.getAlbums(request.params.idStart, function (err, result8) {callback(null, result8)});
+          modelProfession.getAlbums(request.params.idStart, function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelProfession.getProfessions(request.params.idStart, function (err, result9) {callback(null, result9)});
+          modelProfession.getProfessions(request.params.idStart, function (err, result) {callback(null, result)});
         },
       ],
       function (err, result) {

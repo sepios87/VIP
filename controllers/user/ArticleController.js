@@ -8,11 +8,11 @@ module.exports = {
     async.parallel(
       [
         function (callback) {
-          modelArticle.getAllVipWithArticle(function (err, result1) {callback(null, result1)});
+          modelArticle.getAllVipWithArticle(function (err, result) {callback(null, result)});
         },
         function (callback) {
           if (request.params.idStart !== undefined) //évite de faire requete BD si pas encore de vip choisi
-            modelArticle.getArticle(request.params.idStart, function (err, result2) {callback(null, result2[0])});
+            modelArticle.getArticle(request.params.idStart, function (err, result) {callback(null, result[0])});
           else callback(null, null);
         },
       ],
