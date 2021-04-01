@@ -132,14 +132,14 @@ a  {
     margin-left : 10px;
 }
 
-#article, #commentaire{
+#article, .commentaire{
     width: calc(90% - 200px);
     border:2px solid black;
     float: left;
     padding-bottom: 6px;
 }
 
-#nameArticle, #nameCommentaire{
+#nameArticle, .nameCommentaire{
     display: table;
     margin-top:-10px;
     margin-left:5px;
@@ -190,14 +190,14 @@ a  {
     width: 160px;
 }
 
-#commentaire{
+.commentaire{
     width: 220%;
     padding: 0 6% 2% 0;
     margin-top: 20px;
     margin-left: -50%;
 }
 
-#commentaire div{
+.commentaire div{
     text-align: center !important;
 }
 
@@ -322,4 +322,115 @@ form legend{
     grid-template-columns: repeat(2, 1fr);
     width: 80%;
     margin: 10px auto;
+}
+
+#divLogin form{
+    width: 40%; 
+    margin : auto;
+}
+
+.divElemLogin label, #divLogin legend{
+    color : white;
+}
+
+#listeLettres{
+    display : flex;
+}
+
+#listeLettres a{
+    margin : auto 20px;
+}
+
+.articleTxt{
+    text-align: initial; 
+    margin-left : 8px;
+}
+
+.dateArticle{
+    float : left; 
+    margin : 10px;
+}
+
+.lienFiche{
+    float : right; 
+    margin : 10px;
+}
+
+#menuArticle{
+    width : 200px; 
+    float: right; 
+    border : solid black 1px; 
+    border-radius : 5px;
+    padding-bottom : 10px;
+}
+
+#menuArticle p{
+    color : white; 
+    background-color : black; 
+    margin : 0; 
+    padding-bottom : 15px;
+}
+
+#menuArticle div{
+    display : flex; 
+    flex-direction : column;
+}
+
+#descrStart{
+    text-align : initial; 
+    margin-left : 3%;
+}
+
+#gloabalDescription{
+    display: flex;
+}
+
+#globalDescription img{
+    object-fit: cover;
+}
+
+#gloabalDescription div{
+    display : block; 
+    margin : auto 3%;
+}
+
+#repVip{
+    display : flex; 
+    flex-wrap : wrap; 
+    justify-content : space-around;
+}
+
+#repVip div{
+    display : flex; 
+    flex-direction : column; 
+    margin-top : 50px;
+}
+
+#repDiv div img{
+    object-fit: cover;
+}
+
+#focusVip button{
+    margin : 0 30px;
+}
+
+.photoStar{
+    display: none;
+}
+
+.commentaire div{
+    text-align: initial; 
+    margin-left : 8px;
+}
+
+#buttonsLeft{
+    float: left;
+}
+
+#buttonsRight{
+    float: right;
+}
+
+#deplacementAlbum{
+    display : none;
 }

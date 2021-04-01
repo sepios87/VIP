@@ -5,6 +5,7 @@ let async = require("async");
 
 module.exports = {
   ajouterVip: (request, response) => {   
+    response.title = "Ajout d'une star";
     modelVip.getAllNationalite(function (err, result) {
         response.nationalite = result;
         response.date = Date.now();
@@ -33,6 +34,7 @@ module.exports = {
   },
 
   selectionnerVip: (request, response) => {
+    response.title = "Selection d'une star";
     modelVip.getAllVip(function (err, result) {
       if (err) return response.render("error", { error: err });
       response.vip = result;
@@ -41,21 +43,25 @@ module.exports = {
   },
 
   modifierVip: (request, response) => {
+    response.title = "Modification d'une star";
     modelVip.getDetails(request.params.idStart, function (err, result) {
+      if (err) return response.render("error", { error: err });
       response.vip = result[0];
       response.render("modifierVip", response);
     });
   },
 
   modifierVipTraiterInfo: (request, response) => {
-    console.log(request.body)
     modelGestionVip.modifierVip({vip : request.body, id : request.params.idStart}, function(err, result){
+      if (err) return response.render("error", { error: err });
       response.redirect("/vip/modifier");
     })
   },
 
   supprimerVip: (request, response) => {
+    response.title = "Suppression d'une star";
     modelVip.getAllVip(function (err, result) {
+      if (err) return response.render("error", { error: err });
       response.vip = result;
       response.render("supprimerVip", response);
     });
@@ -106,6 +112,7 @@ module.exports = {
       function (err, result) {
         if (err) return response.render("error", { error: err });
         modelGestionVip.removeVip((request.body.idVip), function(err, result){
+          if (err) return response.render("error", { error: err });
           response.redirect("/vip/supprimer");
         });
       }

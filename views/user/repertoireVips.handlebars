@@ -1,9 +1,9 @@
 {{>listLetters}}
 
-<div style="display : flex; flex-wrap : wrap; justify-content : space-around;">
+<div id="repVip">
     {{#each image}}
-        <div style="display : flex; flex-direction : column; margin-top : 50px;">
-            <img width="150px" height="200px" style="object-fit: cover;" src="/images/vip/{{this.photo}}" alt="{{this.alt}}" />
+        <div>
+            <img width="150px" height="200px" src="/images/vip/{{this.photo}}" alt="{{this.alt}}" />
             <a href="/repertoire/star/{{this.id}}">{{this.prenom}} {{this.nom}}</a>
         </div>
     {{/each}}

@@ -92,7 +92,15 @@ module.exports = {
   },
 
   modifierVip: (arg, callback) => {
-    requete(callback,`UPDATE vip SET VIP_PRENOM='${arg.vip.prenom}', VIP_NOM='${arg.vip.nom}', VIP_SEXE='${arg.vip.sexe}', VIP_NAISSANCE='${arg.vip.dateNaissance}', VIP_TEXTE='${arg.vip.commentaire}' WHERE VIP_NUMERO=${arg.id}`);
+    //afin d'éviter les injections sql ivolontaires
+    db.getConnection(function (err, connexion) {
+      if (!err) {
+        connexion.query(`UPDATE vip SET VIP_PRENOM='${arg.vip.prenom}', VIP_NOM='${arg.vip.nom}', VIP_SEXE='${arg.vip.sexe}', VIP_NAISSANCE='${arg.vip.dateNaissance}', VIP_TEXTE=? WHERE VIP_NUMERO=${arg.id}`,[
+          arg.vip.commentaire
+        ],callback);
+        connexion.release();
+      } else console.log(err);
+    });
   },
 
 };

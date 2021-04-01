@@ -3,7 +3,7 @@ let modelArticle = require("../../models/article.js");
 
 module.exports = {
   affichageArticles: (request, response) => {
-    response.title = "Répertoire des stars";
+    response.title = "Articles des stars";
 
     async.parallel(
       [

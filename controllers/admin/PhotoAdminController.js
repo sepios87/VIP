@@ -5,6 +5,7 @@ let async = require("async");
 
 module.exports = {
   ajouterPhotoVip: (request, response) => {
+    response.title = "Ajout d'une photo";
     modelVip.getAllVip(function (err, result) {
       response.vip = result;
       response.render("ajouterPhotoVip", response);
@@ -28,13 +29,14 @@ module.exports = {
   },
 
   supprimerPhotoVip: (request, response) => {
+    response.title = "Suppression d'une photo";
     async.parallel(
       [
         function (callback) {
-          modelVip.getAllVip(function (err, result1) {callback(null, result1)});
+          modelVip.getAllVip(function (err, result) {callback(null, result)});
         },
         function (callback) {
-          modelVip.getAllImage(function(err, result2){callback(null, result2)})
+          modelVip.getAllImage(function(err, result){callback(null, result)})
         },
       ],
       function (err, result) {

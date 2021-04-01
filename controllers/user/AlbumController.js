@@ -6,11 +6,11 @@ module.exports.ListerAlbum = 	function(request, response){
    async.parallel(
     [
       function (callback) {
-        modelAlbum.getAllImages(function (err, result1) {callback(null, result1)});
+        modelAlbum.getAllImages(function (err, result) {callback(null, result)});
       },
       function (callback) {
         if (request.params.idStart !== undefined) //évite de faire requete BD si pas encore de vip choisi
-          modelAlbum.getImage(request.params.idStart, function (err, result2) {callback(null, result2)});
+          modelAlbum.getImage(request.params.idStart, function (err, result) {callback(null, result)});
         else callback(null, null);
       },
     ],

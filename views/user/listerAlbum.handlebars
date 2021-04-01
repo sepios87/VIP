@@ -1,27 +1,27 @@
 <div id="focusVip">
     {{#with start}}
         <a href="/album/{{../precedent}}"><<</a>
-        <button style="margin : 0 30px" id="photoStarSuivante"><</button>
+        <button id="photoStarSuivante"><</button>
         <div id="imageStar">
             <p>{{this.nom}} {{this.prenom}}</p>
             {{#each ../startPhoto}}
-            <div style="display: none;" class='photoStar'>
+            <div class='photoStar'>
                 <img src="/images/vip/{{this.image}}" alt="{{this.description}}">
-                <div id="commentaire">
-                    <p id="nameCommentaire">Commentaire</p>
-                    <div style="text-align: initial; margin-left : 8px">
+                <div class="commentaire">
+                    <p class="nameCommentaire">Commentaire</p>
+                    <div>
                         <p>{{this.description}}</p>
                     </div>
                 </div>
             </div>
             {{/each}}
         </div>
-        <button style="margin : 0 30px" id="photoStarPrecedente">></button>
+        <button id="photoStarPrecedente">></button>
         <a href="/album/{{../suivant}}">>></a>
     {{/with}}
 </div>
 
-<div style="display : none" id="deplacementAlbum">
+<div id="deplacementAlbum">
     <div id="albumPhoto" data-indexImage="{{indexVipActuel}}">
     {{#each photos}}
         {{#ifCond id '==' ../id}}
@@ -32,11 +32,11 @@
     {{/each}}
     </div>
 
-    <div style="float: left;">
+    <div id="buttonsLeft">
         <button id="debutPageButton">Debut</button>
         <button id="prevPageButton">Précédent</button>
     </div>
-    <div style="float: right;">
+    <div id="buttonsRight">
         <button id="nextPageButton">Suivant</button>
         <button id="finPageButton">Fin</button>
     </div>

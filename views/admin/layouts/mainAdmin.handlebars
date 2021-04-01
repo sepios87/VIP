@@ -30,21 +30,13 @@
             <br />
             {{{body}}}
         </div>
-        <div id="footer">
-            L'encyclopédie des stars depuis février 2021 (en NodeJS)
-            <br />
-            © IUT du Limousin DUT Informatique année 2
-            <br />
-            Application réalisée par Florian TORIBIO
-            <br />
-            <img src="/images/nodejs.png" id="LogoNode" alt="Logo NodeJs" title="Logo Node.JS" />
-        </div>
+        {{>footer}}
     </div>
     <script type="text/javascript" language="javascript" src="/js/jquery-3.5.1.min.js"></script>
     <script type="text/javascript" language="javascript" src="/js/addImageVipForm.js"></script>
     <script type="text/javascript" language="javascript" src="/js/selectImageVip.js"></script>
     {{else}}
-        {{{body}}}
+    {{{body}}}
     {{/if}}
 </body>
 
